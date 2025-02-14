@@ -17,12 +17,15 @@ def mask_account_card(bank_info: str) -> str:
         if i.isdigit():
             number_card += i
 
-    if bank_info[-17] == " ":
+
+    if len(number_card) == 16:
         mask_card = naim_card + " " + masks.get_mask_card_number(number_card)
         return mask_card
-    elif bank_info[-21] == " ":
+    elif len(number_card) == 20:
         mask_card = naim_card + " " + masks.get_mask_account(number_card)
         return mask_card
+    else:
+        return "Проверьте правильность счета(карта - 16 цифр, счет - 20 цифр)"
 
 
 def get_date(date_user: str) -> str:

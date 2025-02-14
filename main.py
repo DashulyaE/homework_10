@@ -18,12 +18,10 @@ if __name__ == "__main__":
 bank_info = input("Введите информацию о банковском счете/карте: ")
 date_user = input("Введите дату ")
 
-if len(bank_info) <= 20:
-    print("Неверный формат счета, укажите тип счета и проверьте количество цифр в номере")
-else:
-    print(f"Маска: {widget.mask_account_card(bank_info)}")
+print(f"Маска: {widget.mask_account_card(bank_info)}")
 
 if len(date_user) != 26:
     print("Неверный формат даты")
 else:
     print(f"Новый формат даты: {widget.get_date(date_user)}")
+
