@@ -14,7 +14,7 @@ def mask_account_card(bank_info: str) -> str:
 
     name_end = len(bank_info) - len(number_card)
     number_card = number_card[::-1]
-    name_card = bank_info[:name_end]
+    name_card = bank_info[:name_end-1]
 
     if len(number_card) == 16:
         mask_card = name_card + " " + masks.get_mask_card_number(number_card)
@@ -23,10 +23,16 @@ def mask_account_card(bank_info: str) -> str:
         mask_card = name_card + " " + masks.get_mask_account(number_card)
         return mask_card
     else:
-        return "Проверьте правильность счета(карта - 16 цифр, счет - 20 цифр)"
+        raise ValueError("Проверьте правильность счета(карта - 16 цифр, счет - 20 цифр)")
 
 
 def get_date(date_user: str) -> str:
     """Функция, которая преобразует формат введенной даты пользователем"""
     date_obj = datetime.strptime(date_user, "%Y-%m-%dT%H:%M:%S.%f")
+
+    try:
+        res = bool(datetime.strptime(date_user, "%Y-%m-%dT%H:%M:%S.%f"))
+    except ValueError:
+        res = False
+
     return date_obj.strftime("%d.%m.%Y")

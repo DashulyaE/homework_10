@@ -19,9 +19,5 @@ bank_info = input("Введите информацию о банковском �
 date_user = input("Введите дату ")
 
 print(f"Маска: {widget.mask_account_card(bank_info)}")
-
-if len(date_user) != 26:
-    print("Неверный формат даты")
-else:
-    print(f"Новый формат даты: {widget.get_date(date_user)}")
+print(f"Новый формат даты: {widget.get_date(date_user)}")
 
