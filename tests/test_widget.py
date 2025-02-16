@@ -11,7 +11,7 @@ import pytest
         ("Счет 73654108430135874305", "Счет **4305"),
     ],
 )
-def test_mask_account_card(account, mask):
+def test_mask_account_card(account: str, mask: str) -> None:
     with pytest.raises(ValueError):
         len(mask_account_card("Maestro 1596837"))
 
@@ -22,7 +22,7 @@ def test_mask_account_card(account, mask):
     "user_date, format_date",
     [("2024-03-11T02:26:18.671407", "11.03.2024"), ("2023-10-09T03:15:18.671409", "09.10.2023")],
 )
-def test_get_date(user_date, format_date):
+def test_get_date(user_date: str, format_date: str) -> None:
 
     with pytest.raises(ValueError):
         get_date("")
