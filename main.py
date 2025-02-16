@@ -20,4 +20,3 @@ date_user = input("Введите дату ")
 
 print(f"Маска: {widget.mask_account_card(bank_info)}")
 print(f"Новый формат даты: {widget.get_date(date_user)}")
-
