@@ -7,7 +7,7 @@ log_operation = [
     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-    {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+    {"id": 615064591, "state": "CANCELED", "date": "2018-10-141T08:21:33.41944"},
 ]
 
 if __name__ == "__main__":
@@ -18,12 +18,5 @@ if __name__ == "__main__":
 bank_info = input("Введите информацию о банковском счете/карте: ")
 date_user = input("Введите дату ")
 
-if len(bank_info) <= 20:
-    print("Неверный формат счета, укажите тип счета и проверьте количество цифр в номере")
-else:
-    print(f"Маска: {widget.mask_account_card(bank_info)}")
-
-if len(date_user) != 26:
-    print("Неверный формат даты")
-else:
-    print(f"Новый формат даты: {widget.get_date(date_user)}")
+print(f"Маска: {widget.mask_account_card(bank_info)}")
+print(f"Новый формат даты: {widget.get_date(date_user)}")
