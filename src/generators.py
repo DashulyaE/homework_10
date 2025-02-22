@@ -1,5 +1,7 @@
 from black import Iterator
 
+from tests.conftest import card_number
+
 
 def filter_by_currency(transactions: list[dict], currency: str = "USD") -> Iterator[dict]:
     currency = currency.upper()
@@ -18,5 +20,12 @@ def transaction_descriptions(transactions: list[dict]) -> Iterator[str]:
         yield item["description"]
 
 
-def card_number_generator():
-    pass
+def card_number_generator(start: int, stop: int) -> Iterator[str]:
+    if start >= 1 and start <= stop and stop <= 9999999999999999:
+        card_numbers='0000000000000000'
+        for card_number in range(start, stop + 1):
+            card_number_gen = card_numbers[:-len(str(card_number))]+str(card_number)
+            card_number_form = card_number_gen[:4] + " " + card_number_gen[4:8] + " " + card_number_gen[8:12] + " " + card_number_gen[12:]
+            yield card_number_form
+    else:
+        raise ValueError("Номер карты не в заданном диапазоне")

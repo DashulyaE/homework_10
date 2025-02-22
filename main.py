@@ -110,6 +110,9 @@ if __name__ == "__main__":
     #else:
         #print('Выберите верный тип валюты')
 
-    descriptions = generators.transaction_descriptions(transactions)
-    for _ in range(6):
-        print(next(descriptions))
+    #descriptions = generators.transaction_descriptions(transactions)
+    #for _ in range(6):
+        #print(next(descriptions))
+
+    for card_number in generators.card_number_generator(9999999999999990, 9999999999999990):
+        print(card_number)
