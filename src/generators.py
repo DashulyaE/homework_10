@@ -1,7 +1,5 @@
 from black import Iterator
 
-from tests.conftest import card_number
-
 
 def filter_by_currency(transactions: list[dict], currency: str = "USD") -> Iterator[dict]:
     currency = currency.upper()

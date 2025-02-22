@@ -1,5 +1,3 @@
-from collections.abc import generator
-
 from src.processing import filter_by_state, sort_by_date
 from src import widget
 from src import generators
@@ -101,10 +99,10 @@ if __name__ == "__main__":
     #print(f"Новый формат даты: {widget.get_date(date_user)}")
 
     #if currency_user == "USD" or currency_user == "RUB":
-    #currency_user = "USD"
-    #usd_transactions = generators.filter_by_currency(transactions, currency_user)
-    #for _ in range(5):
-       # print(next(usd_transactions))
+    currency_user = "USD"
+    usd_transactions = generators.filter_by_currency(transactions, currency_user)
+    for _ in range(5):
+        print(next(usd_transactions))
     #elif currency_user == '':
         #print('Вы не выбрали тип валюты')
     #else:
@@ -114,5 +112,5 @@ if __name__ == "__main__":
     #for _ in range(6):
         #print(next(descriptions))
 
-    for card_number in generators.card_number_generator(9999999999999990, 9999999999999990):
-        print(card_number)
+    #for card_number in generators.card_number_generator(1, 5):
+        #print(card_number)
