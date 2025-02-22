@@ -1,3 +1,5 @@
+from collections.abc import generator
+
 from src.processing import filter_by_state, sort_by_date
 from src import widget
 from src import generators
@@ -92,13 +94,22 @@ transactions = [
 if __name__ == "__main__":
     #print(filter_by_state(log_operation, choose_state))
     #print(sort_by_date(log_operation, sort_date))
+    #bank_info = input("Введите информацию о банковском счете/карте: ")
+    #date_user = input("Введите дату ")
+    #currency_user = (input("Введите валюту (USD, RUB): ")).upper()
+    #print(f"Маска: {widget.mask_account_card(bank_info)}")
+    #print(f"Новый формат даты: {widget.get_date(date_user)}")
 
+    #if currency_user == "USD" or currency_user == "RUB":
+    #currency_user = "USD"
+    #usd_transactions = generators.filter_by_currency(transactions, currency_user)
+    #for _ in range(5):
+       # print(next(usd_transactions))
+    #elif currency_user == '':
+        #print('Вы не выбрали тип валюты')
+    #else:
+        #print('Выберите верный тип валюты')
 
-#bank_info = input("Введите информацию о банковском счете/карте: ")
-#date_user = input("Введите дату ")
-
-#print(f"Маска: {widget.mask_account_card(bank_info)}")
-#print(f"Новый формат даты: {widget.get_date(date_user)}")
-    usd_transactions = generators.filter_by_currency(transactions, "USD")
-    for _ in range(3):
-        print(next(usd_transactions))
+    descriptions = generators.transaction_descriptions(transactions)
+    for _ in range(6):
+        print(next(descriptions))
