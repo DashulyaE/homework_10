@@ -3,6 +3,8 @@ from datetime import datetime
 
 def log(filename=None):
     def my_decorator(func):
+        """Декоратор, который логирует время выполнения функции, ее результаты и возникшие ошибки"""
+
         def wrapper(*args, **kwargs):
             time_start = datetime.now()
             try:
@@ -25,15 +27,17 @@ def log(filename=None):
     return my_decorator
 
 
-@log(filename="mylog.txt")
+@log()
 def my_sum(x, y):
+    """Функция сложения"""
     return x + y
 
 
 @log(filename="mylog.txt")
 def my_multiplication(a, b):
+    """Функция умножения"""
     return a * b
 
 
-my_sum(1, 2.3)
-my_multiplication(100, 500.2)
+my_sum(1, 3)
+my_multiplication(100, 502)
