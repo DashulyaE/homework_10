@@ -25,19 +25,3 @@ def log(filename=None):
         return wrapper
 
     return my_decorator
-
-
-@log()
-def my_sum(x, y):
-    """Функция сложения"""
-    return x + y
-
-
-@log(filename="mylog.txt")
-def my_multiplication(a, b):
-    """Функция умножения"""
-    return a * b
-
-
-my_sum(1, 3)
-my_multiplication(100, 502)

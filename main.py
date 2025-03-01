@@ -1,7 +1,7 @@
 # from src.processing import filter_by_state, sort_by_date
 # from src import widget
-from src import generators
-#from src.decorators import log
+#from src import generators
+from src.decorators import log
 
 choose_state = "CANCELED"
 sort_date = False
@@ -79,10 +79,25 @@ if __name__ == "__main__":
     # # else:
     # # print('Выберите верный тип валюты')
     #
-     descriptions = generators.transaction_descriptions(transactions)
-     for _ in range(4):
-         print(next(descriptions))
+     # descriptions = generators.transaction_descriptions(transactions)
+     # for _ in range(4):
+     #     print(next(descriptions))
+     #
+     # for card_number in generators.card_number_generator(2, 4):
+     #     print(card_number)
 
-     for card_number in generators.card_number_generator(2, 4):
-         print(card_number)
 
+    @log()
+    def my_sum(x, y):
+        """Функция сложения"""
+        return x + y
+
+
+    @log(filename="mylog.txt")
+    def my_multiplication(a, b):
+        """Функция умножения"""
+        return a * b
+
+
+    my_sum('1', 3)
+    my_multiplication(100, 502)
