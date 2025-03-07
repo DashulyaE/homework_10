@@ -20,5 +20,5 @@ def read_transactions_json(relative_path):
         return null_json
 
 
-relative_path = "data/operations.json"
-print(read_transactions_json(relative_path))
+# relative_path = "data/operations.json"
+# print(read_transactions_json(relative_path))
