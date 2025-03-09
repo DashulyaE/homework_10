@@ -87,6 +87,33 @@ def transactions() -> list[dict]:
             "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
             "description": "Перевод организации",
             "from": "Visa Platinum 1246377376343588",
-            "to": "Счет 14211924144426031657",
+            "to": "Счет 14211924144426031657"
         },
     ]
+
+
+@pytest.fixture
+def transaction_rub() -> dict:
+    return  {
+            "id": 594226727,
+            "state": "CANCELED",
+            "date": "2018-09-12T21:27:25.241689",
+            "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+            "from": "Visa Platinum 1246377376343588",
+            "to": "Счет 14211924144426031657"
+    }
+
+
+
+@pytest.fixture
+def transaction_usd() -> dict:
+    return {
+        "id": 41428829,
+        "state": "CANCELED",
+        "date": "2018-09-12T21:27:25.241689",
+        "operationAmount": {"amount": "8221.37", "currency": {"name": "руб.", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "MasterCard 7158300734726758",
+        "to": "Счет 35383033474447895560"
+    }

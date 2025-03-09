@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-from utils import read_transactions_json
+from src.utils import read_transactions_json
 
 load_dotenv()
 
@@ -30,11 +30,10 @@ def currency_conversion(transaction_list: dict) -> float:
                 print(f"Ошибка конвертации валюты: {response.status_code}")
                 return 0.0
         except requests.exceptions.RequestException as e:
-            print(f"Ошибка конвертации валюты: {e}")
+            print(f"Ошибка конвертации: {e}")
             return 0.0
 
 
 relative_path = "data/operations.json"
 transaction_list = read_transactions_json(relative_path)
-
-print(currency_conversion(transaction_list[2]))
+#print(currency_conversion(transaction_list[0]))
