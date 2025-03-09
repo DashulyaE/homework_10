@@ -1,6 +1,7 @@
 import json
 import os
 
+
 new_dir = os.chdir("..")
 
 
@@ -20,5 +21,5 @@ def read_transactions_json(relative_path):
         return null_json
 
 
-# relative_path = "data/operations.json"
+relative_path = "data/operations.json"
 # print(read_transactions_json(relative_path))
