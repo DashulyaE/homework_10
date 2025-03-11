@@ -36,4 +36,4 @@ def currency_conversion(transaction_list: dict) -> float:
 
 relative_path = "data/operations.json"
 transaction_list = read_transactions_json(relative_path)
-#print(currency_conversion(transaction_list[0]))
+# print(currency_conversion(transaction_list[0]))
