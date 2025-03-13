@@ -22,4 +22,4 @@ def test_read_transactions_json():
         mock.patch("builtins.open", mock.mock_open(read_data='{"id": 1, "amount": 100')),
     ):
         result = read_transactions_json("data/operations.json")
-        assert result == [], "Expected an empty list for invalid JSON"
+        assert result == []
