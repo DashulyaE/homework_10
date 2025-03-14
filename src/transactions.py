@@ -1,27 +1,29 @@
 import csv
-import os
+import pandas as pd
 
 
-rows = []
-def read_transactions_csv(operations_path: str) -> list[dict]:
+def read_transactions_csv(operations_path):
     """Функция считывания финансовых операций из CSV, выдает список словарей с транзакциями"""
 
-    if os.path.exists(operations_path):
+    rows = []
+    try:
         with open(operations_path, "r", encoding="UTF-8") as file:
-            reader = csv.DictReader(file, delimiter=';')
+            reader = csv.DictReader(file, delimiter=";")
             for row in reader:
                 rows.append(row)
-                #return (row['id'], row['state'], row['date'], row['amount'], row['currency_name'], row['currency_code'], row['from'], row['to'], row['description'])
             if rows == []:
-                print('Файл пустой или не верно заполнен')
-                return rows
+                return "Файл пустой или не верно заполнен"
             else:
                 return rows
-    else:
-        print('Путь к файлу или файл не найден')
-        return rows
+    except Exception as e:
+        return f"Файл не найден, пустой или не верно заполнен. Ошибка: {e}"
 
 
-def read_transactions_excel():
+def read_transactions_excel(operations_path_ex):
+    """Функция считывания финансовых операций из exsel, выдает список словарей с транзакциями"""
 
-    pass
+    try:
+        excel_data = pd.read_excel(operations_path_ex)
+        return excel_data.to_dict(orient="records")
+    except Exception as e:
+        return f"Файл не найден, пустой или не верно заполнен. Ошибка: {e}"
