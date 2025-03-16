@@ -22,7 +22,7 @@ def read_transactions_json(operations_path):
         with open(operations_path, "r", encoding="UTF-8") as f:
             try:
                 data = json.load(f)
-                # file_logger.info("JSON файл успешно загружен")
+                file_logger.info("JSON файл успешно загружен")
                 return data
             except ValueError as e:
                 file_logger.error(f"Ошибка: {e}")
