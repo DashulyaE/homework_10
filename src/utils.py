@@ -14,7 +14,7 @@ file_logger.setLevel(logging.DEBUG)
 
 
 def read_transactions_json(operations_path):
-    """Функция чтения JSON-файла с информацией о транзакиях"""
+    """Функция чтения JSON-файла с информацией о транзакциях"""
 
     null_json = []
     if os.path.exists(operations_path):

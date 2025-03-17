@@ -17,6 +17,7 @@ def category_count(my_list_dict: list[dict], my_descriptions: list) -> dict:
 
     result = {}
     my_category = [transaction["description"] for transaction in my_list_dict]
+    print(my_category)
     count_operations = Counter(my_category)
     for i in my_descriptions:
         result[i] = count_operations[i]
