@@ -1,6 +1,11 @@
 import os
+from math import isnan
+
+import numpy as np
+from pandas import notna
+
 from config import DATA_DIR
-from src import utils, transactions, transactions_filter, processing
+from src import utils, transactions, transactions_filter, processing, widget
 
 
 def main():
@@ -54,7 +59,6 @@ def main():
         print(f"Введенный ответ {sort_date_user} не соответствует возможным вариантам")
         print("Отсортировать операции по дате? Да/Нет")
         sort_date_user = str(input("Ответ: ")).title()
-
     if sort_date_user in ["Да", "Yes"]:
         print("Отсортировать по возрастанию или по убыванию? ")
         sort_date_direction = str(input("Ответ: ")).lower()
@@ -66,17 +70,44 @@ def main():
         else:
             sort_date_direction = False
             result_filter = processing.sort_by_date(result_filter, sort_date_direction)
+
     print("Выводить только рублевые тразакции? Да/Нет")
     currency_user = str(input("Ответ: ")).title()
     while currency_user not in ["Да", "Нет", "Yes", "No"]:
         print(f"Введенный ответ {currency_user} не соответствует возможным вариантам")
         print("Выводить только рублевые тразакции? Да/Нет")
         currency_user = str(input("Ответ: ")).title()
-
     if currency_user in ["Да","Yes"]:
         currency_user = "RUB"
         result_filter = transactions_filter.filter_by_currency(result_filter, currency_user)
-    print(result_filter)
+
+    print("Отфильтровать список транзакций по определенному слову в описании? Да/Нет")
+    description_user = str(input("Ответ: ")).title()
+    while description_user not in ["Да", "Нет", "Yes", "No"]:
+        print(f"Введенный ответ {description_user} не соответствует возможным вариантам")
+        print("Выводить только рублевые тразакции? Да/Нет")
+        description_user = str(input("Ответ: ")).title()
+    if description_user in ["Да","Yes"]:
+        string_user = str(input("Введите слово для поиска: ")).lower()
+        result_filter = transactions_filter.search_string(result_filter, string_user)
+
+    print("Распечатываю итоговый список транзакций...")
+    print(f'Всего банковских операций в выборке: {len(result_filter)}')
+
+    # Назначение маски для номеров карт и банковских счетов
+    for operation in result_filter:
+        original_date = operation["date"]
+        if 'from' in operation and operation['from']:
+            if not isinstance(operation['from'], float) or not np.isnan(operation['from']):
+                operation['from'] = widget.mask_account_card(operation['from'])
+        if 'to' in operation:
+            operation['to'] = widget.mask_account_card(operation['to'])
+        operation["date"] = widget.get_date(original_date)
+
+
+    for operation in result_filter:
+        print(operation)
+
 
 if __name__ == "__main__":
     print(main())
