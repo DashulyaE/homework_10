@@ -29,13 +29,12 @@ def filter_by_currency(log_operation: list[dict], currency: str = "RUB") -> list
     selected_operation = []
     if isinstance(log_operation, list) and len(log_operation) > 0:
         first_item = log_operation[0]
-        if 'currency_name' in first_item and 'from' in first_item and 'to' in first_item:
+        if "currency_name" in first_item and "from" in first_item and "to" in first_item:
             for operation in log_operation:
                 if operation["currency_code"] == currency:
                     selected_operation.append(operation)
-        elif 'operationAmount' in first_item and 'from' in first_item and 'to' in first_item:
+        elif "operationAmount" in first_item and "from" in first_item and "to" in first_item:
             for operation in log_operation:
                 if operation["operationAmount"]["currency"]["code"] == currency:
                     selected_operation.append(operation)
     return selected_operation
-

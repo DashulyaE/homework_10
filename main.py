@@ -30,15 +30,12 @@ def main():
     if file_type == "1":
         file_choise = utils.read_transactions_json(operations_path_1)
         print("Для обработки выбран JSON-файл.")
-        # print(file_choise)
     elif file_type == "2":
         file_choise = transactions.read_transactions_csv(operations_path_2)
         print("Для обработки выбран CSV-файл.")
-        # print(file_choise)
     elif file_type == "3":
         file_choise = transactions.read_transactions_excel(operations_path_3)
         print("Для обработки выбран  EXSEL-файл.")
-        # print(file_choise)
 
     # Блок выбора статуса операции
     print(
@@ -68,6 +65,7 @@ def main():
         sort_date_direction = str(input("Ответ: ")).lower()
         while sort_date_direction not in ["по возрастанию", "по убыванию"]:
             print(f"Введенный ответ {sort_date_direction} не соответствует возможным вариантам")
+            print("Отсортировать по возрастанию или по убыванию? ")
             sort_date_direction = str(input("Ответ: ")).lower()
         if sort_date_direction == "по убыванию":
             result_filter = processing.sort_by_date(result_filter)

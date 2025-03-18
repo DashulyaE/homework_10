@@ -120,12 +120,12 @@ def transaction_usd() -> dict:
 
 @pytest.fixture
 def my_string() -> dict:
-    return 'карты'
+    return "карты"
 
 
 @pytest.fixture
 def my_descriptions_list() -> dict:
-    return ['Перевод организации', 'Перевод с карты на карту']
+    return ["Перевод организации", "Перевод с карты на карту"]
 
 
 @pytest.fixture
