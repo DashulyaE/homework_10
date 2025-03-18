@@ -62,20 +62,21 @@ def main():
             print(f"Введенный ответ {sort_date_direction} не соответствует возможным вариантам")
             sort_date_direction = str(input("Ответ: ")).lower()
         if sort_date_direction == "по убыванию":
-            sort_date = processing.sort_by_date(result_filter)
+            result_filter = processing.sort_by_date(result_filter)
         else:
             sort_date_direction = False
-            sort_date = processing.sort_by_date(result_filter, sort_date_direction)
-    elif sort_date_user in ["Нет", "No"]:
-        sort_date = result_filter
-
+            result_filter = processing.sort_by_date(result_filter, sort_date_direction)
     print("Выводить только рублевые тразакции? Да/Нет")
-    currency_user = str(input("Ответ: ")).lower()
+    currency_user = str(input("Ответ: ")).title()
     while currency_user not in ["Да", "Нет", "Yes", "No"]:
         print(f"Введенный ответ {currency_user} не соответствует возможным вариантам")
         print("Выводить только рублевые тразакции? Да/Нет")
         currency_user = str(input("Ответ: ")).title()
 
+    if currency_user in ["Да","Yes"]:
+        currency_user = "RUB"
+        result_filter = transactions_filter.filter_by_currency(result_filter, currency_user)
+    print(result_filter)
 
 if __name__ == "__main__":
     print(main())
